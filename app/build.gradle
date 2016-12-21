@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'feihan'
+            keyPassword 'a13542324628'
+            storeFile file('E:/android/feihan.jks')
+            storePassword 'a13542324628'
+        }
+        config1 {
+        }
+    }
+    compileSdkVersion 23
+    buildToolsVersion "24.0.3"
+    defaultConfig {
+        applicationId "com.example.hui.mymap"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            jniDebuggable false
+            signingConfig signingConfigs.config
+            renderscriptDebuggable false
+            minifyEnabled false
+            zipAlignEnabled true
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile files('libs/BaiduLBS_Android.jar')
+}
